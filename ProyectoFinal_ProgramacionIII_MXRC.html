@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Programacion III</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+    <style>
+
+        body {
+            background-color: #121212; 
+            color: #B3B3B3;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #a {
+            font-size: 60px;
+            color: #189644;
+            text-align: center;
+        }
+
+        #misdatos h1 {
+            font-size: 10px;
+            color: #189644;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        #misdatos {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px 0;
+        }
+
+        .image-button img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #1DB954; 
+            transition: transform 0.2s;
+        }
+
+        .image-button:hover img {
+            transform: scale(1.1); 
+        }
+
+        .container {
+            padding: 20px;
+            background-color: #1E1E1E; 
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #tabla {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        #tabla th, #tabla td {
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        #tabla th {
+            background-color: #181818; 
+            color: #B3B3B3; 
+            font-weight: bold;
+        }
+
+        #tabla td {
+            background-color: #121212; 
+            color: #B3B3B3;
+        }
+
+        #tabla tr:nth-child(even) td {
+            background-color: #1A1A1A; 
+        }
+
+        #misdatos h1:last-child {
+            font-size: 16px;
+            color: #1DB954; 
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .bootstrap-table .no-records-found {
+            color: #B3B3B3;
+            text-align: center;
+            font-size: 18px;
+            padding: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Elementos de HTML -->
+    <h1 id="a">Mi Musify</h1>
+    <div id="misdatos">
+    </div>
+    <hr>
+
+    <div id="misdatos">
+        <button class="image-button" onclick="canciones1()">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_690231-MCO70909076465_082023-O.webp" alt="Arctic Monkeys" width="200">
+        </button>
+        <button class="image-button" onclick="canciones2()">
+            <img src="https://rockntipo.com/236655-home_default/chase-atlantic-phases-1-cd.jpg" alt="Chase Atlantic" width="175">
+        </button>
+        <button class="image-button" onclick="canciones3()">
+            <img src="https://th.bing.com/th/id/OIP.D-Qqb2E1Q52l3iTyfqTD_gAAAA?rs=1&pid=ImgDetMain" alt="The Neighbourhood" width="200">
+        </button>
+        <button class="image-button" onclick="canciones4()">
+            <img src="https://th.bing.com/th/id/R.57a4c0d9b2c727e066964d6d873cc503?rik=aC1%2fCxoNOrmvHw&riu=http%3a%2f%2fprodimage.images-bn.com%2fpimages%2f5054197365652_p0_v2_s1200x630.jpg&ehk=e2oZyXwtpMz4gPp6XZbCNFN9Z6jayRn97NlMqktHxRQ%3d&risl=&pid=ImgRaw&r=0" alt="Mother Mother" width="175">
+        </button>
+        <button class="image-button" onclick="canciones5()">
+            <img src="https://th.bing.com/th/id/R.a95d0d666b6708001445fe9df3381498?rik=30MQF23NCUdU2Q&pid=ImgRaw&r=0" alt="Magic!" width="175">
+        </button>
+        <button class="image-button" onclick="canciones6()">
+            <img src="https://m.media-amazon.com/images/I/81Uy9h47d6L._SS500_.jpg" alt="Superfruit" width="175">
+        </button>
+        <button class="image-button" onclick="canciones7()">
+            <img src="https://th.bing.com/th/id/OIP.C9UZxQfiyD2AddwijcbODwHaHa?rs=1&pid=ImgDetMain" alt="Lady gaga" width="175">
+        </button>
+    </div>
+
+    <div class="container">
+        <table id="tabla" data-height="460" data-auto-refresh="true">
+            <thead>
+                <tr>
+                    <th data-field="nombre">Cancion</th>
+                    <th data-field="artista">Artista</th>
+                    <th data-field="genero">Genero</th>
+                    <th data-field="duracion">Duracion</th>
+                    <th data-field="imagen">Integrantes</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="misdatos">
+        <h1>| Maria Ximena Rodriguez Carrillo |</h1>    
+        <h1>maria.rodriguez2565@alumnos.udg.mx |</h1>
+        <h1>Angel Emmanuel Sanchez Cuenca |</h1>
+        <h1>Escuela Preparatoria de San Jose del Valle |</h1>
+        <h1>Programacion III |</h1>
+        <h1>Copyright © Todos los derechos reservados</h1>
+    </div>
+
+    <script>
+        /* Javascript */   
+        $(function () {
+            $('#tabla').bootstrapTable({
+                data: datos,
+                formatNoMatches: function () {
+                    return 'No hay canciones en lista';
+                }
+            });
+        });
+
+        var datos = [];
+
+        function muestraDatos() {
+            $('#tabla').bootstrapTable('load', datos);
+        }
+
+        function canciones1() {
+            var cancion1 = {
+                nombre: "Why'd You Only Call Me When You're High?",
+                artista: "Arctic Monkeys",
+                genero: "Indie Rock",
+                duracion: "2:41 minutos",
+                imagen: "<img width='50' src='https://purepop-files.s3-accelerate.amazonaws.com/2020/11/Arctic-Monkeys-2018-Zackery-Michael.jpg'>"
+            };
+            datos.push(cancion1);
+            muestraDatos();
+        }
+
+        function canciones2() {
+            var cancion1 = {
+                nombre: "Heaven and back",
+                artista: "Chase Atlantic",
+                genero: "Alternative R&B",
+                duracion: "4:08 minutos",
+                imagen: "<img width='50' src='https://th.bing.com/th/id/OIP.eHWBdtUGWnCuq0h0NypmRQHaFv?rs=1&pid=ImgDetMain'>"
+            };
+            datos.push(cancion1);
+            muestraDatos();
+        }
+
+        function canciones3() {
+            var cancion1 = {
+                nombre: "Softcore",
+                artista: "The Neighbourhood",
+                genero: "Rock alternativo",
+                duracion: "3:30 minutos",
+                imagen: "<img width='50' src='https://distortedsoundmag.com/wp-content/uploads/2017/02/92a8d2a0-ad64-48ed-990b-d017384d7ec9.jpg'>"
+            };
+            datos.push(cancion1);
+            muestraDatos();
+        }
+
+        function canciones4() {
+            var cancion1 = {
+                nombre: "Hayloft II",
+                artista: "Mhoter Mhoter",
+                genero: "Rock indie y alternativo",
+                duracion: "3:35 minutos",
+                imagen: "<img width='50' src='https://th.bing.com/th/id/R.bbce830666410285ed427edbf8621e91?rik=EjnIO28GEigJpg&pid=ImgRaw&r=0'>"
+            };
+            datos.push(cancion1);
+            muestraDatos();
+        }
+
+        function canciones5() {
+            var cancion1 = {
+                nombre: "Rude",
+                artista: "Magic!",
+                genero: "reggae-pop",
+                duracion: "3:43 minutos",
+                imagen: "<img width='50' src='https://th.bing.com/th/id/OIP.RnS1miTbqkKZU5X4_MW0JwHaEb?rs=1&pid=ImgDetMain'>"
+            };
+            datos.push(cancion1);
+            muestraDatos();
+        }
+
+        function canciones6() {
+            var cancion1 = {
+                nombre: "Guy.exe",
+                artista: "Superfruit",
+                genero: "Pop",
+                duracion: "3:44 minutos",
+                imagen: "<img width='50' src='https://yt3.ggpht.com/a-/AAuE7mAb0Ip8eS-wi0Cm-ubD-tB0Sq93SqZcawEexw=s900-mo-c-c0xffffffff-rj-k-no'>"
+            };
+            datos.push(cancion1);
+            muestraDatos();
+        }
+
+        function canciones7() {
+            var cancion1 = {
+                nombre: "Poker face",
+                artista: "Lady gaga",
+                genero: "Pop",
+                duracion: "4:17 minutos",
+                imagen: "<img width='50' src='https://th.bing.com/th/id/R.832239e64b0e2029a2c6932bac5b4a00?rik=LPjBCe0Pm7Oqnw&riu=http%3a%2f%2fhairstyles.thehairstyler.com%2fhairstyle_views%2fleft_view_images%2f10455%2foriginal%2fLady-Gaga.jpg&ehk=O9OjhItQKsSlV%2b%2fsEjtFL0QV3WZqbzqntAqxGPxCSHw%3d&risl=&pid=ImgRaw&r=0'>"
+            };
+            datos.push(cancion1);
+            muestraDatos();
+        }
+    </script>
+  </body>
+</html>
